@@ -1,0 +1,39 @@
+#Bir menü yapma ve bu menüde girilen bilgiler kaydet tuşuna basıldığında kendi terminalimizden görme.
+import sys
+from PyQt6 import QtWidgets
+from PyQt6.QtWidgets import QApplication,QMainWindow
+from PyQt6.QtGui import QIcon
+
+def windows():
+    app = QApplication(sys.argv)
+    win = QMainWindow()
+    
+    win.setWindowTitle("Siber Vatan")
+    win.setGeometry(700,500,368,498)
+    win.setWindowIcon(QIcon('favicon.png'))
+    
+    label_name = QtWidgets.QLabel(win)
+    label_name.setText('Adınız: ')
+    label_name.move(50,30)
+    
+    label_surname = QtWidgets.QLabel(win)
+    label_surname.setText('Soyadınız: ')
+    label_surname.move(50,60)
+    
+    text_name = QtWidgets.QLineEdit(win)
+    text_name.move(150,30)
+
+    text_sname = QtWidgets.QLineEdit(win)
+    text_sname.move(150,70)
+    
+    save = QtWidgets.QPushButton(win)
+    save.setText("Kaydet")
+    save.move(150,150)
+    
+    def clicked():
+        print("Ad: "+ text_name.text() +" " +  "soyad: " + text_sname.text())
+    save.clicked.connect(clicked)  
+    
+    win.show()
+    sys.exit(app.exec())
+windows()
